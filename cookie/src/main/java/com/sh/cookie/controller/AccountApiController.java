@@ -16,7 +16,7 @@ public class AccountApiController {
 
     private final UserService userService;
 
-    @PostMapping
+    @PostMapping("/login")
     public void login(
             @RequestBody UserLoginRequest loginRequest,
             HttpServletResponse response

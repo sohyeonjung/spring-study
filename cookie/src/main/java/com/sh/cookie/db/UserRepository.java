@@ -1,6 +1,7 @@
 package com.sh.cookie.db;
 
 import com.sh.cookie.model.UserDto;
+import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -28,8 +29,8 @@ public class UserRepository {
     }
 
 
-    //초기화 함수
-    public void init(){
+    @PostConstruct
+    public void start(){
         userList.add(
                 new UserDto(
                         //unique한 random id 자동 생성

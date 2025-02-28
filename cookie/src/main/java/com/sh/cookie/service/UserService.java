@@ -22,6 +22,7 @@ public class UserService {
         var id = userLoginRequest.getId();
         var password = userLoginRequest.getPassword();
 
+
         //유니크 아이디여서 getbyname으로?
         var optionalUser = userRepository.findByName(id);
 
@@ -33,8 +34,11 @@ public class UserService {
                 cookie.setDomain("localhost"); //해당 도메인에서만 쿠키 사용 가능 ex)naver.com daum.net
                 cookie.setPath("/");
                 cookie.setMaxAge(-1); //session과 동일, 연결되어있는 동안만
+                cookie.setHttpOnly(true); //웹에서 javascript 값으로 읽을 수 없음
+                //cookie.setSecure(true); //https에서만 사용되도록 설정
 
                 response.addCookie(cookie);
+
             }
         }else{
             throw new RuntimeException("User not Found");
